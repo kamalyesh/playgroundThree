@@ -1,5 +1,5 @@
 #include <iostream>
-#include "./draw_image/GameLoopMain.hpp"
+#include "./main/GameLoopMain.hpp"
 
 int main(int argc, char *argv[])
 {
