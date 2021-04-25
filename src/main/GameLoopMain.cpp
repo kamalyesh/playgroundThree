@@ -7,6 +7,7 @@ int GameLoopMain::main()
     // Start the game loop
     while (game.IsRunning())
     {
+        game.CaptureInput();
         game.Update();
         game.LateUpdate();
         game.Draw();

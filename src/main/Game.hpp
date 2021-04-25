@@ -4,6 +4,7 @@
 #include <iostream>
 #include "./Window.hpp"
 #include "./WorkingDirectory.hpp"
+#include "./Input.hpp"
 
 using namespace std;
 class Game
@@ -15,7 +16,7 @@ public:
     void Draw();
     bool IsRunning() const;
     void CalculateDeltaTimeFps(); 
-
+    void CaptureInput();
 private:
     Window window;
     WorkingDirectory workingDir;
@@ -23,6 +24,7 @@ private:
     sf::Sprite sprite;
     sf::Clock gameClock;
     float deltaTimeFps;
+    Input input;
 };
 
 #endif /* Game_hpp */
