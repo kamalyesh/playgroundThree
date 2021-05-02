@@ -1,9 +1,12 @@
 #ifndef SceneGame_hpp
 #define SceneGame_hpp
 
-#include "Scene.hpp"
-#include "Input.hpp"
-#include "WorkingDirectory.hpp"
+#include <iostream>
+
+#include "../Scene.hpp"
+#include "../WorkingDirectory.hpp"
+#include "../Components/ComponentSprite.hpp"
+#include "../Components/ComponentKeyboardMovement.hpp"
 
 class SceneGame : public Scene
 {
@@ -15,11 +18,10 @@ public:
     void ProcessInput() override;
     void Update(float deltaTimeFps) override;
     void Draw(Window &window) override;
-
+    void LateUpdate(float deltaTimeFps) override;
 
 private:
-    sf::Texture vikingTexture;
-    sf::Sprite vikingSprite;
+    std::shared_ptr<Object> player;
 
     WorkingDirectory &workingDir;
     Input input;

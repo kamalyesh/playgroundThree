@@ -3,8 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "SceneStateMachine.hpp"
-#include "WorkingDirectory.hpp"
+#include "../SceneStateMachine.hpp"
+#include "../WorkingDirectory.hpp"
 
 class SceneSplashScreen : public Scene
 {
