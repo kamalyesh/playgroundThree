@@ -25,6 +25,7 @@ public:
 private:
     // std::shared_ptr<Object> player;
     ResourceAllocator<sf::Texture> &textureAllocator;
+
     WorkingDirectory &workingDir;
     Input input;
     ObjectCollection objects;
