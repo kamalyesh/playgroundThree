@@ -2,7 +2,7 @@
 
 Object::Object() : queuedForRemoval(false)
 {
-    transform = AddComponent<C_Transform>();
+    transform = AddComponent<ComponentTransform>();
 }
 
 void Object::Awake()

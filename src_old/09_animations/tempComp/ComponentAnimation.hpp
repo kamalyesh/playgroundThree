@@ -1,5 +1,5 @@
-#ifndef C_Animation_hpp
-#define C_Animation_hpp
+#ifndef ComponentAnimation_hpp
+#define ComponentAnimation_hpp
 
 #include "Component.hpp"
 #include "Object.hpp"
@@ -41,4 +41,4 @@ private:
     std::pair<AnimationState, std::shared_ptr<Animation>> currentAnimation;
 };
 
-#endif /* C_Animation_hpp */
+#endif /* ComponentAnimation_hpp */

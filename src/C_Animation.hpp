@@ -1,5 +1,5 @@
-#ifndef C_Animation_hpp
-#define C_Animation_hpp
+#ifndef ComponentAnimation_hpp
+#define ComponentAnimation_hpp
 
 #include "Component.hpp"
 #include "Animation.hpp"
@@ -7,15 +7,15 @@
 
 enum class AnimationState
 {
-    None,
-    Idle,
-    Walk
+    NONE,
+    IDLE,
+    WALK
 };
 
-class C_Animation : public Component
+class ComponentAnimation : public Component
 {
 public:
-    C_Animation(Object* owner);
+    ComponentAnimation(Object* owner);
     
     void Awake() override;
     
@@ -23,12 +23,13 @@ public:
     
     void AddAnimation(AnimationState state, std::shared_ptr<Animation> animation);
     void SetAnimationState(AnimationState state);
+    void SetAnimationDirection(FacingDirection direction);
     const AnimationState& GetAnimationState() const;
     
 private:
-    std::shared_ptr<C_Sprite> sprite;
+    std::shared_ptr<ComponentSprite> sprite;
     std::map<AnimationState, std::shared_ptr<Animation>> animations;
     std::pair<AnimationState, std::shared_ptr<Animation>> currentAnimation;
 };
 
-#endif /* C_Animation_hpp */
+#endif /* ComponentAnimation_hpp */

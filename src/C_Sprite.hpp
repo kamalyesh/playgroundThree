@@ -1,15 +1,15 @@
-#ifndef C_Sprite_hpp
-#define C_Sprite_hpp
+#ifndef ComponentSprite_hpp
+#define ComponentSprite_hpp
 
 #include "Component.hpp"
 #include "C_Transform.hpp"
 #include "Object.hpp"
 #include "ResourceAllocator.hpp"
 
-class C_Sprite : public Component
+class ComponentSprite : public Component
 {
 public:
-    C_Sprite(Object* owner);
+    ComponentSprite(Object* owner);
     
     void SetTextureAllocator(ResourceAllocator<sf::Texture>* allocator);
     
@@ -28,4 +28,4 @@ private:
     int currentTextureID;
 };
 
-#endif /* C_Sprite_hpp */
+#endif /* ComponentSprite_hpp */

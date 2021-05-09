@@ -1,15 +1,15 @@
-#ifndef C_Transform_hpp
-#define C_Transform_hpp
+#ifndef ComponentTransform_hpp
+#define ComponentTransform_hpp
 
 #include "Component.hpp"
 
-class C_Transform : public Component
+class ComponentTransform : public Component
 {
 public:
-    C_Transform(Object *owner);
+    ComponentTransform(Object *owner);
 
     void SetPosition(float x, float y);
-    void SetPosition(const sf::Vector2f &pos);
+    void SetPosition(const sf::Vector2f pos);
 
     void AddPosition(float x, float y);
     void AddPosition(sf::Vector2f pos);
@@ -26,4 +26,4 @@ private:
     sf::Vector2f position;
 };
 
-#endif /* C_Transform_hpp */
+#endif /* ComponentTransform_hpp */

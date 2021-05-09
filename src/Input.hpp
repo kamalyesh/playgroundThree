@@ -9,12 +9,13 @@ class Input
 public:
     enum class Key
     {
-        None = 0,
+        NONE = 0,
         Left = 1,
         Right = 2,
         Up = 3,
         Down = 4,
-        Esc = 5
+        Esc = 5,
+        Shift = 6
     };
     
     void Update();

@@ -1,19 +1,19 @@
 #include "C_Animation.hpp"
 #include "Object.hpp"
 
-C_Animation::C_Animation(Object* owner) : Component(owner), currentAnimation(AnimationState::None, nullptr)
+ComponentAnimation::ComponentAnimation(Object* owner) : Component(owner), currentAnimation(AnimationState::NONE, nullptr)
 {
     
 }
 
-void C_Animation::Awake()
+void ComponentAnimation::Awake()
 {
-    sprite = owner->GetComponent<C_Sprite>();
+    sprite = owner->GetComponent<ComponentSprite>();
 }
 
-void C_Animation::Update(float deltaTime)
+void ComponentAnimation::Update(float deltaTime)
 {
-    if(currentAnimation.first != AnimationState::None)
+    if(currentAnimation.first != AnimationState::NONE)
     {
         bool newFrame = currentAnimation.second->UpdateFrame(deltaTime);
         
@@ -27,17 +27,17 @@ void C_Animation::Update(float deltaTime)
     }
 }
 
-void C_Animation::AddAnimation(AnimationState state, std::shared_ptr<Animation> animation)
+void ComponentAnimation::AddAnimation(AnimationState state, std::shared_ptr<Animation> animation)
 {
     auto inserted = animations.insert(std::make_pair(state, animation));
     
-    if (currentAnimation.first == AnimationState::None)
+    if (currentAnimation.first == AnimationState::NONE)
     {
         SetAnimationState(state);
     }
 }
 
-void C_Animation::SetAnimationState(AnimationState state)
+void ComponentAnimation::SetAnimationState(AnimationState state)
 {
     if (currentAnimation.first == state)
     {
@@ -54,7 +54,15 @@ void C_Animation::SetAnimationState(AnimationState state)
     }
 }
 
-const AnimationState& C_Animation::GetAnimationState() const
+const AnimationState& ComponentAnimation::GetAnimationState() const
 {
     return currentAnimation.first;
+}
+
+void ComponentAnimation::SetAnimationDirection(FacingDirection direction)
+{
+    if(currentAnimation.first != AnimationState::NONE)
+    {
+        currentAnimation.second->SetDirection(direction);
+    }
 }

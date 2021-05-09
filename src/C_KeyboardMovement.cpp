@@ -1,46 +1,73 @@
 #include "C_KeyboardMovement.hpp"
+#include <iostream>
+#define P(s) std::cout<<s<<std::endl;
+ComponentKeyboardMovement::ComponentKeyboardMovement(Object *owner) : Component(owner), moveSpeed(100) {}
 
-C_KeyboardMovement::C_KeyboardMovement(Object *owner) : Component(owner), moveSpeed(100) {}
-
-void C_KeyboardMovement::SetInput(Input *input)
+void ComponentKeyboardMovement::SetInput(Input *input)
 {
     this->input = input;
 }
 
-void C_KeyboardMovement::SetMovementSpeed(int moveSpeed)
+void ComponentKeyboardMovement::SetMovementSpeed(int moveSpeed)
 {
     this->moveSpeed = moveSpeed;
 }
 
-void C_KeyboardMovement::Update(float deltaTime)
+void ComponentKeyboardMovement::Update(float deltaTime)
 {
     if (input == nullptr)
     {
         return;
     }
 
+    int movementSpeed = 0;
+    if (input->IsKeyPressed(Input::Key::Shift))
+    {
+        P("Fast")
+        movementSpeed = moveSpeed * 3;
+    }
+    else
+    {
+
+        movementSpeed = moveSpeed;
+    }
+
     int xMove = 0;
     if (input->IsKeyPressed(Input::Key::Left))
     {
-        xMove = -moveSpeed;
+        xMove = -movementSpeed;
+        animation->SetAnimationDirection(FacingDirection::LEFT);
     }
     else if (input->IsKeyPressed(Input::Key::Right))
     {
-        xMove = moveSpeed;
+        xMove = movementSpeed;
+        animation->SetAnimationDirection(FacingDirection::RIGHT);
     }
 
     int yMove = 0;
     if (input->IsKeyPressed(Input::Key::Up))
     {
-        yMove = -moveSpeed;
+        yMove = -movementSpeed;
     }
     else if (input->IsKeyPressed(Input::Key::Down))
     {
-        yMove = moveSpeed;
+        yMove = movementSpeed;
+    }
+
+
+    if(xMove == 0 && yMove == 0) {
+        animation->SetAnimationState(AnimationState::IDLE);
+    } else {
+        animation->SetAnimationState(AnimationState::WALK);
     }
 
     float xFrameMove = xMove * deltaTime;
     float yFrameMove = yMove * deltaTime;
 
     owner->transform->AddPosition(xFrameMove, yFrameMove);
+}
+
+void ComponentKeyboardMovement::Awake()
+{
+    animation = owner->GetComponent<ComponentAnimation>();
 }

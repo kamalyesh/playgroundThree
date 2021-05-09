@@ -1,23 +1,25 @@
-#ifndef C_KeyboardMovement_hpp
-#define C_KeyboardMovement_hpp
+#ifndef ComponentKeyboardMovement_hpp
+#define ComponentKeyboardMovement_hpp
 
 #include "Component.hpp"
+#include "C_Animation.hpp"
 #include "Input.hpp"
 #include "Object.hpp"
 
-class C_KeyboardMovement : public Component
+class ComponentKeyboardMovement : public Component
 {
 public:
-    C_KeyboardMovement(Object *owner);
+    ComponentKeyboardMovement(Object *owner);
 
     void SetInput(Input *input);
     void SetMovementSpeed(int moveSpeed);
-
+    void Awake() override;
     void Update(float deltaTime) override;
 
 private:
     int moveSpeed;
     Input *input;
+    std::shared_ptr<ComponentAnimation> animation;
 };
 
-#endif /* C_KeyboardMovement_hpp */
+#endif /* ComponentKeyboardMovement_hpp */

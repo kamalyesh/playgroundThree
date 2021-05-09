@@ -1,6 +1,6 @@
 #include "Animation.hpp"
 
-Animation::Animation() : frames(0), currentFrameIndex(0), currentFrameTime(0.f)
+Animation::Animation(FacingDirection direction) : frames(0), currentFrameIndex(0), currentFrameTime(0.f), direction(direction)
 {
 }
 
@@ -52,4 +52,23 @@ void Animation::IncrementFrame()
 void Animation::Reset()
 {
     currentFrameIndex = 0;
+}
+
+void Animation::SetDirection(FacingDirection newDirection)
+{
+    if (direction != newDirection)
+    {
+        direction = newDirection;
+
+        for (auto &&f : frames)
+        {
+            f.x += f.width;
+            f.width *= -1;
+        }
+    }
+}
+
+FacingDirection Animation::GetDirection() const
+{
+    return direction;
 }
