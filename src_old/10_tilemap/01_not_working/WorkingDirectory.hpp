@@ -36,8 +36,8 @@ private:
     std::string path;
     std::string source;
     std::string resources;
-    std::string texture;
-    std::string tilemap;
+    // std::string texture;
+    // std::string tilemap;
 };
 
 #endif

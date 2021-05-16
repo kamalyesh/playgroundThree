@@ -39,7 +39,7 @@ void SceneGame::OnCreate()
     walkAnimation->AddFrame(vikingTextureID, 0, 435, frameWidth, frameHeight, walkAnimFrameSeconds);
     walkAnimation->AddFrame(vikingTextureID, 200, 435, frameWidth, frameHeight, walkAnimFrameSeconds);
     walkAnimation->AddFrame(vikingTextureID, 400, 435, frameWidth, frameHeight, walkAnimFrameSeconds);
-    animation->AddAnimation(AnimationState::WALK, walkAnimation);
+    animation->AddAnimation(AnimationState::IDLE, walkAnimation);
     
     objects.Add(player);
 
@@ -48,7 +48,6 @@ void SceneGame::OnCreate()
     // In future we will remove this hardcoded offset when we 
 	// look at allowing the player to change resolutions.
     sf::Vector2i mapOffset(-100, 128);
-    // sf::Vector2i mapOffset(0, 0);
     std::vector<std::shared_ptr<Object>> levelTiles = mapParser.Parse(workingDir.Resources() + "tilemap/Test Map 1.tmx", mapOffset);
 
     objects.Add(levelTiles);
