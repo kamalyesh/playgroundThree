@@ -42,7 +42,7 @@ void SceneGame::OnCreate()
     walkAnimation->AddFrame(vikingTextureID, 400, 435, frameWidth, frameHeight, walkAnimFrameSeconds);
     animation->AddAnimation(AnimationState::WALK, walkAnimation);
     
-    // objects.Add(player);
+    objects.Add(player);
 
     // You will need to play around with this offset until it fits 
 	// the level in at your chosen resolution. This worls for 1920 * 1080.
